@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="yellow_pokemon">#F0C006</color>
+
+    <color name="fire_type">#B30000</color>
+    <color name="water_type">#370091</color>
+    <color name="plant_type">#6ED135</color>
+    <color name="eletric_type">#F8FF1B</color>
+    <color name="fighter_type">#C7B500</color>
+    <color name="ice_type">#FFFFFF</color>
+    <color name="psychic_type">#004A1C</color>
+    <color name="venom_type">#7F0079</color>
+    <color name="normal_type">#5A3212</color>
+    <color name="nocturne_type">#000000</color>
+    <color name="ground_type">#C73000</color>
+    <color name="metal_type">#BCBCC2</color>
+    <color name="rock_type">#5C6162</color>
+    <color name="insect_type">#FF0000</color>
+    <color name="fly_type">#60DAFF</color>
+    <color name="ghost_type">#F097EE</color>
+    <color name="dragon_type">#FF5A00</color>
+    <color name="fairy_type">#FF008C</color>
+    <color name="shadow_type">#2B2024</color>
+    <color name="unknown_type">#FFFFFF</color>
+    <color name="background_index">#FF715B</color>
+</resources>

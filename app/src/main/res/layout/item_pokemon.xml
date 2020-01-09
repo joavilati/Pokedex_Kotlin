@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_item_indice_pokemon"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="16dp"
+    android:clipToPadding="true"
+    app:cardElevation="6dp"
+    app:cardCornerRadius="4dp"
+    app:cardPreventCornerOverlap="false"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_item_indice"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ImageView
+            android:id="@+id/image_indice"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            tools:background="@android:color/darker_gray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+        <TextView
+            android:id="@+id/text_nameP_pokemon"
+            android:layout_marginEnd="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:textAlignment="center"
+            android:fontFamily="@font/pokemon_solid"
+            tools:text="Nome do Pokemon"
+            app:layout_constraintStart_toEndOf="@id/image_indice"
+            app:layout_constraintTop_toTopOf="@+id/image_indice"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/text_id_pokemon"
+            android:layout_width="0dp"
+            android:textAlignment="textEnd"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pokemon_hollow"
+            android:layout_marginEnd="32dp"
+            android:textSize="30sp"
+            tools:text="#001 "
+            app:layout_constraintStart_toEndOf="@id/image_indice"
+            app:layout_constraintTop_toBottomOf="@id/text_nameP_pokemon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/image_indice"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
