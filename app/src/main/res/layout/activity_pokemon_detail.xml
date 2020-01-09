@@ -53,7 +53,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_types"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/card_pokemon_detail"
                 app:layout_constraintEnd_toStartOf="@id/card_pokemon_detail"
