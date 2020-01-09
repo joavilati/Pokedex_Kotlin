@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.pokedexagoravai.model.Pokemon
+import com.example.pokedexagoravai.util.colorTypeByID
 import com.example.pokedexagoravai.view.PokeDetailViewHolder
 import com.example.pokedexagoravai.view.PokeEvolutionsAdapter
 import com.example.pokedexagoravai.view.PokeTypesAdapter
@@ -41,6 +43,7 @@ class PokemonDetailActivity : AppCompatActivity() {
         text_name_pokemon_detail.text = pokemon.name
         text_description_pokemon_details.text = pokemon.xdescription
         Glide.with(this).load(pokemon.gifUrl).into(image_pokemon_detail)
+        card_pokemon_detail.setCardBackgroundColor(ContextCompat.getColor(this, colorTypeByID.get(pokemon.typeofpokemon[0]) ?: 0))
 
     }
 

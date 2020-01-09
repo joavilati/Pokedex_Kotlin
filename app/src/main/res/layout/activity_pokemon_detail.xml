@@ -73,14 +73,14 @@
                     android:layout_margin="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/floresta"
+                    android:background="@drawable/forest_cenary"
                     >
 
                     <ImageView
                         android:id="@+id/image_pokemon_detail"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="32dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
