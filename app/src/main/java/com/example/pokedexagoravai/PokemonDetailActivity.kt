@@ -1,76 +1,55 @@
 package com.example.pokedexagoravai
 
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import androidx.core.content.ContextCompat
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.pokedexagoravai.model.Pokemon
-import com.example.pokedexagoravai.util.colorTypeByID
-import com.example.pokedexagoravai.view.PokeDetailViewHolder
-import com.example.pokedexagoravai.view.PokeEvolutionsAdapter
-import com.example.pokedexagoravai.view.PokeTypesAdapter
+import com.example.pokedexagoravai.view.PokeDetailAdapter
 import kotlinx.android.synthetic.main.activity_pokemon_detail.*
 
 const val EXTRA_POKEMON = "com.example.pokedexagoravai.POKEMON"
 class PokemonDetailActivity : AppCompatActivity() {
 
-    val pokeEvolutionsAdapter : PokeEvolutionsAdapter by lazy {
-        PokeEvolutionsAdapter(pokemon.cleanIdEvolution)
-    }
-
-    val pokeTypesAdapter : PokeTypesAdapter by lazy {
-        PokeTypesAdapter(pokemon.typeofpokemon)
+    val pokeDetailAdapter: PokeDetailAdapter by lazy {
+        PokeDetailAdapter(pokemon)
     }
 
     val pokemon: Pokemon by lazy{
             intent.extras?.getSerializable(EXTRA_POKEMON) as Pokemon
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_detail)
 
-        bind()
         configAdapters()
+        configToolbar()
 
     }
 
-    private fun bind(){
-        text_name_pokemon_detail.text = pokemon.name
-        text_description_pokemon_details.text = pokemon.xdescription
-        Glide.with(this).load(pokemon.gifUrl).into(image_pokemon_detail)
-        card_pokemon_detail.setCardBackgroundColor(ContextCompat.getColor(this, colorTypeByID.get(pokemon.typeofpokemon[0]) ?: 0))
-
+    private fun configToolbar() {
+        setSupportActionBar(toolbar_details)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun configAdapters(){
-        configTypesAdapter()
-        configEvolutionsAdapter()
-    }
 
-    private fun configTypesAdapter() {
         val layoutManager = LinearLayoutManager(this)
-        recycler_types.layoutManager = layoutManager
-        recycler_types.setHasFixedSize(true)
-        recycler_types.adapter = pokeTypesAdapter
+        recycler_details.layoutManager = layoutManager
+        recycler_details.adapter = pokeDetailAdapter
+
     }
-    private fun configEvolutionsAdapter(){
 
-        val layoutManager = LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
-        recycler_evolutions.layoutManager = layoutManager
-        recycler_evolutions.setHasFixedSize(true)
-        recycler_evolutions.adapter = pokeEvolutionsAdapter
-
-        if (pokemon.evolutions.size > 1) {
-
-            text_evolution_label_pokemon_detail.visibility = View.VISIBLE
-            recycler_evolutions.visibility = View.VISIBLE
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> onBackPressed()
 
         }
+        return super.onOptionsItemSelected(item)
     }
 
 

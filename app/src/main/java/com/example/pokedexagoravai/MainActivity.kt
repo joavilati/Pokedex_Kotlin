@@ -2,9 +2,14 @@ package com.example.pokedexagoravai
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextMenu
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokedexagoravai.model.Pokemon
 import com.example.pokedexagoravai.network.PokeApi
 import com.example.pokedexagoravai.util.getFactory
 import com.example.pokedexagoravai.view.PokemonAdapter
@@ -46,6 +51,22 @@ class MainActivity : AppCompatActivity() {
             pokemonIndexAdapter.addPokemons(pokemons ?: return@Observer)
         })
     }
+
+    override fun onCreateContextMenu(
+        menu: ContextMenu?,
+        v: View?,
+        menuInfo: ContextMenu.ContextMenuInfo?
+    ) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+
+        val inflater:MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_layout,menu)
+    }
+
+//    fun filterPokemon(pokemons: Pokemon, nameSearch:String){
+//
+//        val pokemonFound =
+//    }
 
 
 }

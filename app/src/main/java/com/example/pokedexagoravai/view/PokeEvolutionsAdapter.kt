@@ -11,7 +11,7 @@ class PokeEvolutionsAdapter (
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokeEvolutionsViewHolder {
         return PokeEvolutionsViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_evolutions,parent,false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_image_evolutions,parent,false)
         )
     }
 

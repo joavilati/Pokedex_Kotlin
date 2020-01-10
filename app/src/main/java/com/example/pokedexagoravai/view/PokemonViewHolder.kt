@@ -29,7 +29,10 @@ class PokemonViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         namePokemon.text = pokemon.name
         idPokemon.text = "${pokemon.id} "
         Glide.with(itemView.context).load(pokemon.imageurl).into(imagePokemon)
+
         cardPokemon.setCardBackgroundColor(ContextCompat.getColor(itemView.context, colorTypeByID.get(pokemon.typeofpokemon[0]) ?: 0))
+        namePokemon.setTextColor(ContextCompat.getColor(itemView.context, R.color.default_color))
+
 
         itemView.constraint_item_indice.setOnClickListener {
             println(pokemon.gifUrl)

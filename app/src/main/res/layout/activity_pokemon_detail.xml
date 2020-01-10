@@ -3,130 +3,25 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     >
-
-    <ScrollView
-
-        android:id="@+id/scroll_pokemon_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_details"
+        android:theme="@style/AppToolbarTheme"
+        style="@style/pokemon_toolbar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background_index"
-            tools:context=".PokemonDetailActivity">
-
-            <TextView
-                android:id="@+id/text_name_pokemon_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/pokemon_solid"
-                android:textColor="@color/yellow_pokemon"
-                android:textSize="40sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Nome-Pokemon" />
-
-            <TextView
-                android:id="@+id/text_types_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/pokemon_solid"
-                android:text="@string/types_label"
-                android:textColor="@color/yellow_pokemon"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toStartOf="@id/card_pokemon_detail"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_name_pokemon_detail" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_types"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@id/card_pokemon_detail"
-                app:layout_constraintEnd_toStartOf="@id/card_pokemon_detail"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_types_label"
-                tools:listitem="@layout/item_type" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_pokemon_detail"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                app:cardCornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/text_types_label"
-                app:layout_constraintTop_toTopOf="@id/text_types_label">
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_margin="8dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/forest_cenary"
-                    >
-
-                    <ImageView
-                        android:id="@+id/image_pokemon_detail"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginTop="32dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-
-            <TextView
-                android:id="@+id/text_description_pokemon_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="8dp"
-                android:paddingTop="8dp"
-                android:textSize="22sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/card_pokemon_detail"
-                tools:text="@string/ipsum_lorem" />
-
-            <TextView
-                android:id="@+id/text_evolution_label_pokemon_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pokemon_solid"
-                android:text="@string/evolutions"
-                android:textColor="@android:color/black"
-                android:textSize="20sp"
-                android:visibility="invisible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_description_pokemon_details" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_evolutions"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:visibility="invisible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_evolution_label_pokemon_detail" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

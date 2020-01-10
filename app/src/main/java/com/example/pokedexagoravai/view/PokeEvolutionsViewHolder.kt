@@ -4,7 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_evolutions.view.*
+import kotlinx.android.synthetic.main.item_image_evolutions.view.*
 
 class PokeEvolutionsViewHolder (itemView : View) :RecyclerView.ViewHolder(itemView) {
 

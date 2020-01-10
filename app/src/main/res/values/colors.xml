@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="yellow_pokemon">#F0C006</color>
+    <color name="branco">#FFF</color>
+    <color name="default_color">#808080</color>
 
     <color name="fire_type">#B30000</color>
     <color name="water_type">#370091</color>
@@ -25,5 +27,5 @@
     <color name="fairy_type">#FF008C</color>
     <color name="shadow_type">#2B2024</color>
     <color name="unknown_type">#FFFFFF</color>
-    <color name="background_index">#FF715B</color>
+    <color name="background">#FF715B</color>
 </resources>
