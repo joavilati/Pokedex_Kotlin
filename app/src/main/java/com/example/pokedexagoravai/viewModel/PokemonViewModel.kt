@@ -31,7 +31,7 @@ class PokemonViewModel (private val pokeIndexAPINetwork: PokeApi) : ViewModel() 
         )
     }
 
-    fun getEspecificPokemon(name:String = "", id:String = "000") {
+    fun getEspecificPokemon(pokemon:String = "") {
 
         CoroutineScope(Dispatchers.IO).launchSafe(
             {
@@ -43,7 +43,7 @@ class PokemonViewModel (private val pokeIndexAPINetwork: PokeApi) : ViewModel() 
                 if (result.status == STATUS.SUCCESS) {
 
                     val results = result.data?.filter {
-                        it.name.toUpperCase().contains(name.toUpperCase())
+                        it.name.toUpperCase().contains(pokemon.toUpperCase()) || it.id.contains(pokemon)
                     }
 
                     pokemons.postValue(results)
