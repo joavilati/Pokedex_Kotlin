@@ -11,12 +11,12 @@ import kotlinx.coroutines.Dispatchers
 
 class PokemonViewModel (private val pokeIndexAPINetwork: PokeApi) : ViewModel() {
 
-    val pokemons = MutableLiveData<ArrayList<Pokemon>>()
+    val pokemons = MutableLiveData<List<Pokemon>>()
 
     fun getPokemons() {
         CoroutineScope(Dispatchers.IO).launchSafe(
             {
-                println("nao sei oq ta acontecendo")
+
             },
             {
                 val result = pokeIndexAPINetwork.getPokemons()
@@ -27,6 +27,29 @@ class PokemonViewModel (private val pokeIndexAPINetwork: PokeApi) : ViewModel() 
 
                     pokemons.postValue(results)
                 }
+            }
+        )
+    }
+
+    fun getEspecificPokemon(name:String = "", id:String = "000") {
+
+        CoroutineScope(Dispatchers.IO).launchSafe(
+            {
+
+            },
+            {
+                val result = pokeIndexAPINetwork.getPokemons()
+
+                if (result.status == STATUS.SUCCESS) {
+
+                    val results = result.data?.filter {
+                        it.name.toUpperCase().contains(name.toUpperCase())
+                    }
+
+                    pokemons.postValue(results)
+
+                }
+
             }
         )
     }

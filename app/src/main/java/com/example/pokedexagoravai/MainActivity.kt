@@ -2,14 +2,11 @@ package com.example.pokedexagoravai
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ContextMenu
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.View
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pokedexagoravai.model.Pokemon
 import com.example.pokedexagoravai.network.PokeApi
 import com.example.pokedexagoravai.util.getFactory
 import com.example.pokedexagoravai.view.PokemonAdapter
@@ -33,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         configAdapter()
         registerObesrvers()
         viewModel.getPokemons()
-
+        setSupportActionBar(toolbar)
+        searchPokemon()
 
     }
 
@@ -52,16 +50,29 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    override fun onCreateContextMenu(
-        menu: ContextMenu?,
-        v: View?,
-        menuInfo: ContextMenu.ContextMenuInfo?
-    ) {
-        super.onCreateContextMenu(menu, v, menuInfo)
+    private fun searchPokemon() {
+        edit_text_search.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) { }
 
-        val inflater:MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu_layout,menu)
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.getEspecificPokemon(edit_text_search.text.toString())
+            }
+        })
     }
+
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//
+//        menuInflater.inflate(R.menu.menu_layout,menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if(item.itemId == R.id.item_bar_search) Toast.makeText(this,"teste", Toast.LENGTH_SHORT).show()
+//        return super.onOptionsItemSelected(item)
+//    }
 
 //    fun filterPokemon(pokemons: Pokemon, nameSearch:String){
 //

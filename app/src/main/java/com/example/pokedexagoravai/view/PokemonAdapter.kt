@@ -25,7 +25,7 @@ class PokemonAdapter(
     }
 
 
-    fun addPokemons(newPokemons:ArrayList<Pokemon>){
+    fun addPokemons(newPokemons:List<Pokemon>){
         pokes.clear()
         pokes.addAll(newPokemons)
         notifyDataSetChanged()
