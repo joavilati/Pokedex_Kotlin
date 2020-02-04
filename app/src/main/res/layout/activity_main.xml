@@ -54,7 +54,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         app:boxStrokeColor="@color/yellow_pokemon"
-        app:boxBackgroundColor="@color/branco"
+        app:boxBackgroundColor="@color/white"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusBottomStart="15dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

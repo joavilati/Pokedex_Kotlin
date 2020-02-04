@@ -4,8 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="yellow_pokemon">#F0C006</color>
-    <color name="branco">#FFF</color>
+    <color name="white">#FFF</color>
     <color name="default_color">#808080</color>
+    <color name="card_background_red">#AF0A0A</color>
 
     <color name="fire_type">#B30000</color>
     <color name="water_type">#370091</color>

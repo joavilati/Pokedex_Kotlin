@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexagoravai.R
 import com.example.pokedexagoravai.model.Pokemon
+import com.example.pokedexagoravai.view.holders.PokemonViewHolder
 
 class PokemonAdapter(
     private val pokes: ArrayList<Pokemon> = arrayListOf()
 ) : RecyclerView.Adapter<PokemonViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
         return PokemonViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_pokemon,parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_pokemon, parent, false)
         )
     }
 

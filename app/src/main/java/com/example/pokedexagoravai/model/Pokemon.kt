@@ -6,6 +6,7 @@ data class Pokemon(
     val name :String,
     val id :String,
     val typeofpokemon: ArrayList<String>,
+    val weaknesses : ArrayList<String>,
     val category :String,
     val evolutions: List<String>,
     val xdescription:String,

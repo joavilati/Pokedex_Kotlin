@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexagoravai.R
+import com.example.pokedexagoravai.view.holders.PokeEvolutionsViewHolder
 
 class PokeEvolutionsAdapter (
     val evolutionsIds :List<String> = arrayListOf()
@@ -11,7 +12,11 @@ class PokeEvolutionsAdapter (
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokeEvolutionsViewHolder {
         return PokeEvolutionsViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_image_evolutions,parent,false)
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_image_evolutions,
+                parent,
+                false
+            )
         )
     }
 
