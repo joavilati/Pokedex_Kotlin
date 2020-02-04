@@ -1,4 +1,4 @@
-package com.example.pokedexagoravai.view
+package com.example.pokedexagoravai.view.holders
 
 import android.view.View
 import androidx.core.content.ContextCompat
