@@ -18,7 +18,8 @@ data class Pokemon(
     }
 
     val gifUrl get():String {
-        val cleanName = name.replace("-","").toLowerCase()
+        var cleanName = name.replace("-","").replace(" ", "", !name.contains(" ")).toLowerCase()
+
         return "https://play.pokemonshowdown.com/sprites/xyani/$cleanName.gif"
     }
 
