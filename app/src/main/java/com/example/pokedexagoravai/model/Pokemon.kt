@@ -16,9 +16,9 @@ data class Pokemon(
     val cleanIdEvolution get():List<String> {
         return evolutions.map { id -> id.replace("#","") }
     }
-
+    //TODO testar links
     val gifUrl get():String {
-        var cleanName = name.replace("-","").replace(" ", "").replace(".","").toLowerCase()
+        var cleanName = name.replace("-","").replace(" ", "").replace(".","").replace("'","").toLowerCase()
 
         return "https://play.pokemonshowdown.com/sprites/xyani/$cleanName.gif"
     }
