@@ -1,11 +1,10 @@
-package com.example.pokedexagoravai.view
+package com.example.pokedexagoravai.ui.pokemon_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokedexagoravai.R
 import com.example.pokedexagoravai.model.Pokemon
-import com.example.pokedexagoravai.view.holders.PokemonViewHolder
 
 class PokemonAdapter(
     private val pokes: ArrayList<Pokemon> = arrayListOf()

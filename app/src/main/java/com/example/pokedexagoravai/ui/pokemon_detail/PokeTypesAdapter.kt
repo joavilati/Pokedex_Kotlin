@@ -1,4 +1,4 @@
-package com.example.pokedexagoravai.view
+package com.example.pokedexagoravai.ui.pokemon_detail
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

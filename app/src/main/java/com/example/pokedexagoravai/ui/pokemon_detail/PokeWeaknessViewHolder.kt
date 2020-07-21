@@ -1,4 +1,4 @@
-package com.example.pokedexagoravai.view.holders
+package com.example.pokedexagoravai.ui.pokemon_detail
 
 import android.util.Log
 import android.view.View

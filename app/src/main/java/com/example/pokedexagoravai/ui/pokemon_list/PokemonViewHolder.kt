@@ -1,4 +1,4 @@
-package com.example.pokedexagoravai.view.holders
+package com.example.pokedexagoravai.ui.pokemon_list
 
 import android.content.Intent
 import android.view.View

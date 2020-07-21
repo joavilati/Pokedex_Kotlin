@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedexagoravai.network.PokeApi
 import com.example.pokedexagoravai.util.getFactory
-import com.example.pokedexagoravai.view.PokemonAdapter
+import com.example.pokedexagoravai.ui.pokemon_list.PokemonAdapter
 import com.example.pokedexagoravai.viewModel.PokemonViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
