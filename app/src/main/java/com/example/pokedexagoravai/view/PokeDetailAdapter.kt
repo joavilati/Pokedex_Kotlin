@@ -12,10 +12,10 @@ import com.example.pokedexagoravai.view.holders.*
 import java.lang.RuntimeException
 import kotlin.math.log
 
-const val ITEM_HEADER = 0
-const val ITEM_DESCRIPTION = 1
-const val ITEM_WEAKNESS =2
-const val ITEM_EVOLUTION = 3
+private const val ITEM_HEADER = 0
+private const val ITEM_DESCRIPTION = 1
+private const val ITEM_WEAKNESS =2
+private const val ITEM_EVOLUTION = 3
 
 
 class PokeDetailAdapter (val pokemon: Pokemon) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
