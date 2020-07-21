@@ -9,6 +9,8 @@
     >
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_details"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         android:theme="@style/AppToolbarTheme"
         style="@style/pokemon_toolbar"
         app:layout_constraintTop_toTopOf="parent"

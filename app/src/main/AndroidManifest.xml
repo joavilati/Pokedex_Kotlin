@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".PokemonDetailActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

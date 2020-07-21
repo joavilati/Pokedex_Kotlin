@@ -1,94 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/background"
     android:focusable="true"
-    android:focusableInTouchMode="true"
-    >
-    <androidx.appcompat.widget.Toolbar
-        app:title="@null"
-        android:layout_height="wrap_content"
+    android:focusedByDefault="true"
+    android:background="@color/background"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:id="@+id/toolbar"
-        app:elevation="20dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/pokemon_toolbar">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraint_toolbar"
+        >
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_home"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00000000"
+            android:fitsSystemWindows="true"
             >
 
-            <ImageView
-                android:id="@+id/image_logo_pokemon"
-                android:layout_marginEnd="16dp"
-                android:padding="4dp"
-                android:layout_width="200dp"
-                android:layout_height="54dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/pokemon_png_logo"
-                tools:layout_editor_absoluteX="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/image_logo_pokemon"
-                />
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/card_background_red"
+                android:focusedByDefault="false"
+                app:layout_scrollFlags="scroll|enterAlways">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:focusedByDefault="false"
+                    app:layout_collapseMode="parallax">
 
+                    <ImageView
+                        android:id="@+id/image_logo_pokemon"
+                        android:layout_width="200dp"
+                        android:layout_height="54dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@android:color/transparent"
+                        android:padding="4dp"
+                        android:src="@drawable/pokemon_png_logo"
+                        app:layout_constraintBottom_toTopOf="@id/image_logo_pokemon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="16dp" />
 
-    </androidx.appcompat.widget.Toolbar>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/text_input_layout"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        app:boxBackgroundColor="@color/white"
+                        app:boxCornerRadiusBottomStart="15dp"
+                        app:boxCornerRadiusTopEnd="20dp"
+                        android:focusedByDefault="false"
+                        app:boxStrokeColor="@color/yellow_pokemon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image_logo_pokemon">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_text_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:hint="@string/pokemon_title"
+                            android:focusedByDefault="false"
+                            android:textColorHint="@android:color/darker_gray"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp"
+                            />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:boxStrokeColor="@color/yellow_pokemon"
-        app:boxBackgroundColor="@color/white"
-        app:boxCornerRadiusTopEnd="20dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+                    </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/edit_text_search"
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="16sp"
-            android:background="@null"
-            android:textColorHint="@android:color/darker_gray"
-            android:hint="Pokemon"
-            android:inputType="text"
-            android:imeOptions="actionSearch"
-            android:enabled="true"
-            android:textColor="@color/colorPrimary"
-            tools:text="teste"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_main"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/item_pokemon"
-        />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
