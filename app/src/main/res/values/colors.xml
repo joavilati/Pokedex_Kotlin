@@ -29,4 +29,7 @@
     <color name="shadow_type">#2B2024</color>
     <color name="unknown_type">#FFFFFF</color>
     <color name="background">#FF715B</color>
+
+    <color name="transparent">#00ffffff</color>
+
 </resources>
