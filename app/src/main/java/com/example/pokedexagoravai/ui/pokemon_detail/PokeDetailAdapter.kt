@@ -19,7 +19,7 @@ class PokeDetailAdapter(val pokemon: Pokemon) : RecyclerView.Adapter<RecyclerVie
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         viewsState.bind(pokemon, holder)
         viewsState.nextState?.let {
-            viewsState = viewsState.nextState!!
+            viewsState = it
         }
     }
 }
