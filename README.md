@@ -1,7 +1,7 @@
 # Pokedex Kotlin
 
   The app intents to provide a dictionary about pokemon's, here you will find the project on version 0.3.0. For build it, i am
-  using retrofit to consult pokemons API's, and practicing the construction of recycler view inside recyclerview.
+  using retrofit to consult pokemons API's, and practicing the construction of recycler view inside recycler view.
 
 ## Prerequisites
 
