@@ -1,16 +1,23 @@
-package com.example.pokedexagoravai.view
+package com.example.pokedexagoravai.ui.pokemonDetail.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.pokedexagoravai.R
 import com.example.pokedexagoravai.model.Pokemon
+import com.example.pokedexagoravai.ui.PokeTypesAdapter
+import com.example.pokedexagoravai.ui.PokeWeaknessAdapter
 import com.example.pokedexagoravai.util.buildAdapter
-import com.example.pokedexagoravai.view.holders.*
+import com.example.pokedexagoravai.util.colorTypeByID
+import kotlinx.android.synthetic.main.item_description.view.*
+import kotlinx.android.synthetic.main.item_evolution.view.*
+import kotlinx.android.synthetic.main.item_pokemon_detail_header.view.*
+import kotlinx.android.synthetic.main.item_weaknesses.view.*
 import java.lang.RuntimeException
-import kotlin.math.log
 
 const val ITEM_HEADER = 0
 const val ITEM_DESCRIPTION = 1
@@ -20,7 +27,6 @@ const val ITEM_EVOLUTION = 3
 
 class PokeDetailAdapter (val pokemon: Pokemon) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
-    val typeViewPool = RecyclerView.RecycledViewPool()
     val evolutionsViewPool = RecyclerView.RecycledViewPool()
     val weakenessesViewPool = RecyclerView.RecycledViewPool()
 
@@ -40,7 +46,7 @@ class PokeDetailAdapter (val pokemon: Pokemon) : RecyclerView.Adapter<RecyclerVi
                     false
                 )
             )
-            ITEM_WEAKNESS-> PokeWeaknessesViewHolder(
+            ITEM_WEAKNESS -> PokeWeaknessesViewHolder(
                 LayoutInflater.from(parent.context).inflate(
                     R.layout.item_weaknesses,
                     parent,
@@ -79,8 +85,7 @@ class PokeDetailAdapter (val pokemon: Pokemon) : RecyclerView.Adapter<RecyclerVi
                     viewHolder.recycler,
                     PokeTypesAdapter(pokemon.typeofpokemon),
                     null,
-                    LinearLayoutManager(holder.itemView.context),
-                    typeViewPool
+                    LinearLayoutManager(holder.itemView.context)
                 )
             }
             ITEM_DESCRIPTION -> {
@@ -97,8 +102,7 @@ class PokeDetailAdapter (val pokemon: Pokemon) : RecyclerView.Adapter<RecyclerVi
                     LinearLayoutManager(
                         holder.itemView.context,
                         LinearLayoutManager.HORIZONTAL,
-                        false),
-                    weakenessesViewPool
+                        false)
 
                 )
             }
@@ -109,10 +113,37 @@ class PokeDetailAdapter (val pokemon: Pokemon) : RecyclerView.Adapter<RecyclerVi
                     viewHolder.recycler,
                     PokeEvolutionsAdapter(pokemon.cleanIdEvolution),
                     null,
-                    LinearLayoutManager(holder.itemView.context,LinearLayoutManager.HORIZONTAL,false),
-                    evolutionsViewPool
+                    LinearLayoutManager(holder.itemView.context,LinearLayoutManager.HORIZONTAL,false)
                 )
             }
         }
     }
 }
+
+class PokeWeaknessesViewHolder (itemView : View): RecyclerView.ViewHolder(itemView) {
+    val recycler = itemView.recycler_weaknesses
+}
+
+class PokeHeaderDetailsViewHolder (itemView :View) :RecyclerView.ViewHolder(itemView){
+    val recycler = itemView.recycler_types
+    fun bind(pokemon : Pokemon){
+        itemView.text_name_pokemon_detail.text = pokemon.name
+        Glide.with(itemView).load(pokemon.gifUrl).into(itemView.image_pokemon_detail)
+        itemView.card_pokemon_detail.setCardBackgroundColor(
+            ContextCompat.getColor(
+            itemView.context, colorTypeByID.get(pokemon.typeofpokemon[0]) ?: 0)
+        )
+    }
+}
+
+class PokeEvolutionSectionViewHolder (itemView : View): RecyclerView.ViewHolder(itemView){
+    val recycler = itemView.recycler_evolutions
+}
+
+class PokeDescriptionViewHolder (itemView : View) :RecyclerView.ViewHolder(itemView) {
+
+    fun bind(pokemon: Pokemon) {
+        itemView.text_description.text = pokemon.xdescription
+    }
+}
+

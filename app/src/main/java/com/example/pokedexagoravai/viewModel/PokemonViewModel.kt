@@ -1,57 +1,48 @@
 package com.example.pokedexagoravai.viewModel
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.os.Bundle
+import androidx.lifecycle.*
+import androidx.savedstate.SavedStateRegistryOwner
 import com.example.pokedexagoravai.extension.launchSafe
 import com.example.pokedexagoravai.model.Pokemon
-import com.example.pokedexagoravai.network.PokeApi
-import com.example.pokedexagoravai.util.STATUS
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.pokedexagoravai.repository.PokeRepository
+import com.example.pokedexagoravai.util.Status
 
-class PokemonViewModel (private val pokeIndexAPINetwork: PokeApi) : ViewModel() {
+class PokemonViewModel (var repository: PokeRepository) : ViewModel() {
 
-    val pokemons = MutableLiveData<List<Pokemon>>()
+    private val _pokemons = MutableLiveData<List<Pokemon>>()
+    val pokemons: LiveData<List<Pokemon>>
+        get() = _pokemons
 
     fun getPokemons() {
-        CoroutineScope(Dispatchers.IO).launchSafe(
-            {
-
-            },
-            {
-                val result = pokeIndexAPINetwork.getPokemons()
-
-                if (result.status == STATUS.SUCCESS) {
-
-                    val results = result.data ?: arrayListOf()
-
-                    pokemons.postValue(results)
+        viewModelScope.launchSafe {
+            repository.getPokemons {result ->
+                when(result.status) {
+                    Status.SUCCESS -> _pokemons.postValue(result.data)
+                    Status.ERROR -> TODO()
                 }
             }
-        )
+        }
     }
 
-    fun getEspecificPokemon(pokemon:String = "") {
+    fun getEspecificPokemon(pokemonNameOrId:String = "") {
+        pokemons.value?.filter { pokemon ->
+            pokemon.name.toUpperCase().contains(pokemonNameOrId.toUpperCase()) || pokemon.id.contains(pokemonNameOrId)
+        }
+    }
+}
 
-        CoroutineScope(Dispatchers.IO).launchSafe(
-            {
-
-            },
-            {
-                val result = pokeIndexAPINetwork.getPokemons()
-
-                if (result.status == STATUS.SUCCESS) {
-
-                    val results = result.data?.filter {
-                        it.name.toUpperCase().contains(pokemon.toUpperCase()) || it.id.contains(pokemon)
-                    }
-
-                    pokemons.postValue(results)
-
-                }
-
-            }
-        )
+class PokemonViewModelFactory(
+    owner:SavedStateRegistryOwner,
+    private val repository: PokeRepository,
+    defaultArgs: Bundle? = null
+): AbstractSavedStateViewModelFactory(owner, defaultArgs) {
+    override fun <T : ViewModel?> create(
+        key: String,
+        modelClass: Class<T>,
+        handle: SavedStateHandle
+    ): T {
+        return PokemonViewModel(repository) as T
     }
 
 }

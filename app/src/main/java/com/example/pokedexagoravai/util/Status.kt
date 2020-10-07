@@ -1,5 +1,5 @@
 package com.example.pokedexagoravai.util
 
-enum class STATUS {
+enum class Status {
     SUCCESS, LOADING, ERROR
 }

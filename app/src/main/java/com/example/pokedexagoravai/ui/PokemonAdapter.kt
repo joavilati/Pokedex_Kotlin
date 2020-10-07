@@ -1,19 +1,47 @@
-package com.example.pokedexagoravai.view.holders
+package com.example.pokedexagoravai.ui
 
 import android.content.Intent
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pokedexagoravai.EXTRA_POKEMON
-import com.example.pokedexagoravai.PokemonDetailActivity
 import com.example.pokedexagoravai.R
 import com.example.pokedexagoravai.model.Pokemon
+import com.example.pokedexagoravai.ui.pokemonDetail.EXTRA_POKEMON
+import com.example.pokedexagoravai.ui.pokemonDetail.PokemonDetailActivity
+
 import com.example.pokedexagoravai.util.colorTypeByID
 import kotlinx.android.synthetic.main.item_pokemon.view.*
+
+class PokemonAdapter(
+    private val pokes: ArrayList<Pokemon> = arrayListOf()
+) : RecyclerView.Adapter<PokemonViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
+        return PokemonViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_pokemon, parent, false)
+        )
+    }
+
+    override fun getItemCount(): Int {
+        return pokes.size
+    }
+
+    override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
+        holder.bind(pokes[position])
+    }
+    
+    fun addPokemons(newPokemons: List<Pokemon>) {
+        pokes.clear()
+        pokes.addAll(newPokemons)
+        notifyDataSetChanged()
+    }
+
+}
 
 class PokemonViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
 
@@ -40,7 +68,7 @@ class PokemonViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
         }
     }
     private fun launchDetailScreen( pokemon :Pokemon){
-        val intent = Intent(itemView.context,PokemonDetailActivity::class.java)
+        val intent = Intent(itemView.context, PokemonDetailActivity::class.java)
         intent.putExtra(EXTRA_POKEMON,pokemon)
         itemView.context.startActivity(intent)
     }
