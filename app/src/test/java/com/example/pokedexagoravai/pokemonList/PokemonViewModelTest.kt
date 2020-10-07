@@ -1,0 +1,3 @@
+package com.example.pokedexagoravai.pokemonList
+
+class PokemonViewModelTest

@@ -5,22 +5,21 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.pokedexagoravai.extension.setVisible
 import com.example.pokedexagoravai.repository.PokeRepository
 import com.example.pokedexagoravai.ui.PokemonAdapter
 import com.example.pokedexagoravai.viewModel.PokemonViewModel
 import com.example.pokedexagoravai.viewModel.PokemonViewModelFactory
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
-@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val pokemonIndexAdapter: PokemonAdapter by lazy {
         PokemonAdapter()
     }
-
     private val viewModel: PokemonViewModel by viewModels {
         PokemonViewModelFactory(this, PokeRepository(), intent.extras)
     }
@@ -37,7 +36,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
     private fun configAdapter(){
         val layoutManager = LinearLayoutManager(this)
 
@@ -49,7 +47,21 @@ class MainActivity : AppCompatActivity() {
     fun registerObesrvers(){
         viewModel.pokemons.observe(this, Observer { pokemons ->
             pokemonIndexAdapter.addPokemons(pokemons ?: return@Observer)
+            if(iv_psyduck.isVisible) {
+                showPokemons(true)
+            }
         })
+
+        viewModel.pokemonsNotFound.observe(this, Observer { didntFind->
+            if(recycler_main.isVisible && didntFind){
+                showPokemons(false)
+            }
+        })
+    }
+
+    private fun showPokemons(show:Boolean) {
+        recycler_main.setVisible(show)
+        iv_psyduck.setVisible(!show)
     }
 
     private fun searchPokemon() {
@@ -59,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                viewModel.getEspecificPokemon(edit_text_search.text.toString())
+                viewModel.getSpecificPokemon(edit_text_search.text.toString())
             }
         })
     }

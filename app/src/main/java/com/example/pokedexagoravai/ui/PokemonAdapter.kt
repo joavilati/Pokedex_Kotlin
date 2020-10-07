@@ -34,7 +34,7 @@ class PokemonAdapter(
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         holder.bind(pokes[position])
     }
-    
+
     fun addPokemons(newPokemons: List<Pokemon>) {
         pokes.clear()
         pokes.addAll(newPokemons)
