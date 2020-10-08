@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface PokemonService{
     @GET("pokemon.json")
-    suspend fun getPokemons() : Response<ArrayList<Pokemon>>
+    suspend fun getPokemons() : Response<List<Pokemon>>
 }

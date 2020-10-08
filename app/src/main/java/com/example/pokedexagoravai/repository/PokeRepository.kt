@@ -11,12 +11,12 @@ import java.lang.Exception
 
 class PokeRepository {
 
-    private val api = PokeIndexController.retrofit.create(PokemonService::class.java)
+    var service = PokeIndexController.retrofit.create(PokemonService::class.java)
 
-    suspend fun getPokemons(listener: (LiveDataResult<ArrayList<Pokemon>>) -> Unit) {
+    suspend fun getPokemons(listener: (LiveDataResult<List<Pokemon>>) -> Unit) {
         withContext(IO) {
             try{
-                val request = api.getPokemons()
+                val request = service.getPokemons()
                 val response = LiveDataNetworking.request(request)
                 listener(response)
             } catch (e: Exception) {

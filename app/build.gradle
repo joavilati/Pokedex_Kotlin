@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -79,4 +81,14 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation platform('com.google.firebase:firebase-bom:25.11.0')
+
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+
+
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
 }

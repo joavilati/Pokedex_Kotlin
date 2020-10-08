@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "887990325306",
+    "firebase_url": "https://pokedex-kotlin.firebaseio.com",
+    "project_id": "pokedex-kotlin",
+    "storage_bucket": "pokedex-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887990325306:android:aada25933b7db22075e503",
+        "android_client_info": {
+          "package_name": "com.example.pokedexagoravai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887990325306-avjir2f71j2j2b9es588863tu08tc0tg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSj0Ru8FFiJ7mn-aY0B2zYU_zgRdpmIEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "887990325306-avjir2f71j2j2b9es588863tu08tc0tg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
